@@ -1,4 +1,3 @@
-
 #define MOD_SEMAPHORE_USE_FUTEX
 
 #ifdef MOD_SEMAPHORE_USE_FUTEX
@@ -79,9 +78,9 @@ int sem_timedwait_secs(sem_t* sem, int secs)
 static inline
 int sem_timedwait_secs(sem_t* sem, int secs)
 {
-      struct timespec timeout;
-      clock_gettime(CLOCK_REALTIME, &timeout);
-      timeout.tv_sec += secs;
-      return sem_timedwait(sem, &timeout);
+    struct timespec timeout;
+    clock_gettime(CLOCK_REALTIME, &timeout);
+    timeout.tv_sec += secs;
+    return sem_timedwait(sem, &timeout);
 }
 #endif
